@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(value = "登录认证接口参数", description = "登录认证接口参数")
 public class LoginParam {
+    //描述此类
     /**
      * 用户名
      */

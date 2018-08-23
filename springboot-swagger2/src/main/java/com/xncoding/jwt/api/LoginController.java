@@ -12,6 +12,7 @@ import springfox.documentation.annotations.ApiIgnore;
 /**
  * 登录接口类
  */
+//类的描述，显示为：登录 : 用户请求登录获取Token  tags：description
 @Api(value = "登录请求接口类", tags = "登录", description = "用户请求登录获取Token")
 @ApiResponses(value = {
         @ApiResponse(code = 200, message = "请求已完成"),
@@ -27,10 +28,12 @@ public class LoginController {
 
     private static final Logger _logger = LoggerFactory.getLogger(LoginController.class);
 
+    // /login的实现备注 notes:
     @ApiOperation(value = "登录认证接口", notes = "不管是接口还是WebSocket连接都需要先调用此接口拿到Token，然后再通过Token调用相应接口，最好使用HTTPS协议。调用RESTful API方式不需要传后面两个参数，如果通过WebSocket连接需要传递", produces = "application/json")
     @PostMapping("/login")
     public BaseResponse<String> login(@RequestHeader(name="Content-Type", defaultValue = "application/json") String contentType,
                                       @ApiParam(value = "登录参数") @RequestBody LoginParam loginParam) {
+//指出有2个参数，描述分别是content-Type ，登录参数，类型分别是header,body。对LoginParam 的具体描述，又可以参考此类的描述
         _logger.info("用户请求登录获取Token");
         return new BaseResponse<>(true, "Login success", "JWT");
     }
